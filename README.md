@@ -1,5 +1,4 @@
-###GET DAILY OPTIONS DATA FROM TAIFEX
-####從台灣期貨交易所擷取每天選擇權資料
+###從台灣期貨交易所擷取每天選擇權資料
 http://www.taifex.com.tw/
 
 ######設定 Setup:
