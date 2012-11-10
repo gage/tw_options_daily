@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ "$1" == "" ] || [ "$2" == "" ] || [ "$3" == "" ] || [ "$4" == "" ]; then
+	echo "Usage: ./get 2012 11 08 ~/options_data 20121108.csv"
+	exit 1
+fi
+
+curl -i -L -D /tmp/cookie -b /tmp/cookie -d "goday=&DATA_DATE=$1%2F$2%2F$3&DATA_DATE1=$1%2F$2%2F$3&DATA_DATE_Y=&DATA_DATE_M=&DATA_DATE_D=&DATA_DATE_Y1=&DATA_DATE_M1=&DATA_DATE_D1=&syear=&smonth=&sday=&syear1=&smonth1=&sday1=&datestart=$1%2F$2%2F$3&dateend=$1%2F$2%2F$3&COMMODITY_ID=TXO&commodity_id2t=" "http://www.taifex.com.tw/chinese/3/3_2_3_b.asp" | awk '/TXO/' > /tmp/$1$2$3
+
+iconv -f big5 -t utf-8 /tmp/$1$2$3 > $4/$1$2$3.csv
+rm /tmp/$1$2$3
